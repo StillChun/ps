@@ -32,18 +32,18 @@ func sortList(head *ListNode) *ListNode {
 		return head
 	}
 
-	//divide List as left and right.
+	//divide List as left and right. head is leftList, slow is rightList
 	//right List can have one more element than left List
-	right := head
-	tail := head
+	slow := head
+	fast := head
 	var cutPoint *ListNode
 
-	for tail != nil && tail.Next != nil {
-		cutPoint = right
-		right = right.Next
-		tail = tail.Next.Next
+	for fast != nil && fast.Next != nil {
+		cutPoint = slow
+		slow = slow.Next
+		fast = fast.Next.Next
 	}
 	cutPoint.Next = nil
 
-	return merge(sortList(head), sortList(right))
+	return merge(sortList(head), sortList(slow))
 }
