@@ -13,7 +13,7 @@ func maxRotateFunction(A []int) int {
 	}
 
 	for _, v := range A {
-		tmp = tmp - sum + len(A)*v
+		tmp += -sum + len(A)*v
 		if tmp > answer {
 			answer = tmp
 		}
